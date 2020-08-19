@@ -25,13 +25,13 @@
     "@zeit/next-css": "^1.0.1",
     "cowsay-browser": "^1.1.8",
     "next": "^9.3.2",
-    "@sls-next/next-aws-lambda": "^2.0.5-alpha.0",
+    "thrive-next-aws-lambda": "^2.0.5-alpha.0",
     "react": "^16.8.4",
     "react-dom": "^16.8.4"
   },
   "devDependencies": {
     "eslint-plugin-react": "^7.12.4",
     "serverless": "^1.39.1",
-    "@sls-next/serverless-plugin": "^2.6.0-alpha.2"
+    "thrive-serverless-plugin": "^2.6.0-alpha.2"
   }
 }

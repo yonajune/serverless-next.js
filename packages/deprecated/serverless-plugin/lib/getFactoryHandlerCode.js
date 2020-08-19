@@ -33,6 +33,6 @@ module.exports = (jsHandlerPath, customHandlerPath) => {
     .replace(PAGE_BUNDLE_PATH, `./${basename}.original.js`)
     .replace(
       HANDLER_FACTORY_PATH,
-      customHandlerPath || "@sls-next/next-aws-lambda"
+      customHandlerPath || "thrive-next-aws-lambda"
     );
 };

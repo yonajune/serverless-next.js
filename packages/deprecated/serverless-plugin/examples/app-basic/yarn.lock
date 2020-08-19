@@ -1368,23 +1368,23 @@
   resolved "https://registry.yarnpkg.com/@sindresorhus/is/-/is-0.7.0.tgz#9a06f4f137ee84d7df0460c1fdb1135ffa6c50fd"
   integrity sha512-ONhaKPIufzzrlNbqtWFFd+jlnemX6lJAgq9ZeiZtS7I1PIf/la7CW4m83rTXRnVnsMbW2k56pGYu7AUFJD9Pow==
 
-"@sls-next/next-aws-lambda@^2.0.5-alpha.0":
+"thrive-next-aws-lambda@^2.0.5-alpha.0":
   version "2.6.1"
-  resolved "https://registry.yarnpkg.com/@sls-next/next-aws-lambda/-/next-aws-lambda-2.6.1.tgz#3bb898429af6bc330424d92dd80727210ea4be79"
+  resolved "https://registry.yarnpkg.com/thrive-next-aws-lambda/-/next-aws-lambda-2.6.1.tgz#3bb898429af6bc330424d92dd80727210ea4be79"
   integrity sha512-5t5LtIEhYoK87Ng9X+FH5mfgqkbnJJeCKzVpOOrUoaTIW8Oo7xFt96vcfkiMACsQ3VZBR+qzPZWzZcLRXtBf+A==
 
-"@sls-next/next-aws-lambda@^2.6.0-alpha.1":
+"thrive-next-aws-lambda@^2.6.0-alpha.1":
   version "2.6.0-alpha.1"
-  resolved "https://registry.yarnpkg.com/@sls-next/next-aws-lambda/-/next-aws-lambda-2.6.0-alpha.1.tgz#53ba5d8b8f9bb805afc2d39039afd9528786135f"
+  resolved "https://registry.yarnpkg.com/thrive-next-aws-lambda/-/next-aws-lambda-2.6.0-alpha.1.tgz#53ba5d8b8f9bb805afc2d39039afd9528786135f"
   integrity sha512-p3EzfHMsn9Z11CDRvQJ5f15WIDjXkSwZuJtQVYRNFgVhMLTXre8SmFYpSq9DU0fjM4xaEBUc3ar2VKgdVvZAYg==
 
-"@sls-next/serverless-plugin@^2.6.0-alpha.2":
+"thrive-serverless-plugin@^2.6.0-alpha.2":
   version "2.6.0-alpha.2"
-  resolved "https://registry.yarnpkg.com/@sls-next/serverless-plugin/-/serverless-plugin-2.6.0-alpha.2.tgz#8749c678591ace6cca9c0789ed5d8af3d2db2390"
+  resolved "https://registry.yarnpkg.com/thrive-serverless-plugin/-/serverless-plugin-2.6.0-alpha.2.tgz#8749c678591ace6cca9c0789ed5d8af3d2db2390"
   integrity sha512-vGW8Clg3OSYjaF0VdW5kIQMqjhxqIl5fDUhQwGmOnunB7qh5phkKIa+BH0GCkcfDLCptVim4VSQAqM8GZGN5yA==
   dependencies:
     "@mapbox/s3urls" "^1.5.3"
-    "@sls-next/next-aws-lambda" "^2.6.0-alpha.1"
+    "thrive-next-aws-lambda" "^2.6.0-alpha.1"
     chalk "^2.4.2"
     debug "^4.1.1"
     fs-extra "^7.0.1"

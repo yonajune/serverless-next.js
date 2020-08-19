@@ -2837,11 +2837,11 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@sls-next/lambda-at-edge@link:./packages/libs/lambda-at-edge":
+"thrive-lambda-at-edge@link:./packages/libs/lambda-at-edge":
   version "0.0.0"
   uid ""
 
-"@sls-next/next-aws-cloudfront@link:./packages/compat-layers/lambda-at-edge-compat":
+"thrive-next-aws-cloudfront@link:./packages/compat-layers/lambda-at-edge-compat":
   version "0.0.0"
   uid ""
 

@@ -1,15 +1,15 @@
 import { Component } from "@serverless/core";
 import { readJSON, pathExists } from "fs-extra";
 import { resolve, join } from "path";
-import { Builder } from "@sls-next/lambda-at-edge";
+import { Builder } from "thrive-lambda-at-edge";
 import {
   OriginRequestDefaultHandlerManifest as BuildManifest,
   OriginRequestDefaultHandlerManifest,
   OriginRequestApiHandlerManifest,
   RoutesManifest
-} from "@sls-next/lambda-at-edge/types";
-import uploadAssetsToS3 from "@sls-next/s3-static-assets";
-import createInvalidation from "@sls-next/cloudfront";
+} from "thrive-lambda-at-edge/types";
+import uploadAssetsToS3 from "thrive-s3-static-assets";
+import createInvalidation from "thrive-cloudfront";
 import obtainDomains from "./lib/obtainDomains";
 import { DEFAULT_LAMBDA_CODE_DIR, API_LAMBDA_CODE_DIR } from "./constants";
 import type {
@@ -229,9 +229,9 @@ class NextjsComponent extends Component {
       apiEdgeLambda
     ] = await Promise.all([
       this.load("@serverless/aws-s3"),
-      this.load("@sls-next/aws-cloudfront"),
-      this.load("@sls-next/aws-lambda", "defaultEdgeLambda"),
-      this.load("@sls-next/aws-lambda", "apiEdgeLambda")
+      this.load("thrive-aws-cloudfront"),
+      this.load("thrive-aws-lambda", "defaultEdgeLambda"),
+      this.load("thrive-aws-lambda", "apiEdgeLambda")
     ]);
 
     const bucketOutputs = await bucket({
@@ -523,7 +523,7 @@ class NextjsComponent extends Component {
 
     const { domain, subdomain } = obtainDomains(inputs.domain);
     if (domain && subdomain) {
-      const domainComponent = await this.load("@sls-next/domain");
+      const domainComponent = await this.load("thrive-domain");
       const domainOutputs = await domainComponent({
         privateZone: false,
         domain,
@@ -545,8 +545,8 @@ class NextjsComponent extends Component {
   async remove(): Promise<void> {
     const [bucket, cloudfront, domain] = await Promise.all([
       this.load("@serverless/aws-s3"),
-      this.load("@sls-next/aws-cloudfront"),
-      this.load("@sls-next/domain")
+      this.load("thrive-aws-cloudfront"),
+      this.load("thrive-domain")
     ]);
 
     await Promise.all([bucket.remove(), cloudfront.remove(), domain.remove()]);

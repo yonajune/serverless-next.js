@@ -9,7 +9,7 @@ stage: dev
 region: eu-west-1
 
 plugins:
-  - "@sls-next/serverless-plugin"
+  - "thrive-serverless-plugin"
   - serverless-offline
 
 custom:

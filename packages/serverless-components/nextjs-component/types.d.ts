@@ -1,4 +1,4 @@
-import { PublicDirectoryCache } from "@sls-next/s3-static-assets/src/lib/getPublicAssetCacheControl";
+import { PublicDirectoryCache } from "thrive-s3-static-assets/src/lib/getPublicAssetCacheControl";
 
 export type ServerlessComponentInputs = {
   build?: BuildOptions | boolean;

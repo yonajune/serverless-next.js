@@ -1,5 +1,5 @@
 {
-  "name": "@sls-next/next-aws-cloudfront",
+  "name": "thrive-next-aws-cloudfront",
   "version": "1.5.0-alpha.2",
   "publishConfig": {
     "access": "public"
