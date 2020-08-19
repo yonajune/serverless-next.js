@@ -20,7 +20,6 @@ import type {
 } from "../types";
 
 type DeploymentResult = {
-  appUrl: string;
   bucketName: string;
 };
 
@@ -436,108 +435,7 @@ class NextjsComponent extends Component {
       routesManifest
     );
 
-    // Add any custom cloudfront configuration
-    // this includes overrides for _next, static and api
-    Object.entries(cloudFrontOtherInputs).map(([path, config]) => {
-      const edgeConfig = {
-        ...(config["lambda@edge"] || {})
-      };
-
-      // here we are removing configs that cannot be overridden
-      if (path === this.pathPattern("api/*", routesManifest)) {
-        // for "api/*" we need to make sure we aren't overriding the predefined lambda handler
-        // delete is idempotent so it's safe
-        delete edgeConfig["origin-request"];
-      } else if (!["static/*", "_next/*"].includes(path)) {
-        // for everything but static/* and _next/* we want to ensure that they are pointing at our lambda
-        edgeConfig[
-          "origin-request"
-        ] = `${defaultEdgeLambdaOutputs.arn}:${defaultEdgeLambdaPublishOutputs.version}`;
-      }
-
-      cloudFrontOrigins[0].pathPatterns[path] = {
-        // spread the existing value if there is one
-        ...cloudFrontOrigins[0].pathPatterns[path],
-        // spread custom config
-        ...config,
-        "lambda@edge": {
-          // spread the provided value
-          ...(cloudFrontOrigins[0].pathPatterns[path] &&
-            cloudFrontOrigins[0].pathPatterns[path]["lambda@edge"]),
-          // then overrides
-          ...edgeConfig
-        }
-      };
-    });
-
-    cloudFrontOrigins[0].pathPatterns[
-      this.pathPattern("_next/data/*", routesManifest)
-    ] = {
-      ttl: 0,
-      allowedHttpMethods: ["HEAD", "GET"],
-      "lambda@edge": {
-        "origin-response": `${defaultEdgeLambdaOutputs.arn}:${defaultEdgeLambdaPublishOutputs.version}`,
-        "origin-request": `${defaultEdgeLambdaOutputs.arn}:${defaultEdgeLambdaPublishOutputs.version}`
-      }
-    };
-
-    // make sure that origin-response is not set.
-    // this is reserved for serverless-next.js usage
-    const cloudFrontDefaults = cloudFrontDefaultsInputs || {};
-
-    const defaultLambdaAtEdgeConfig = {
-      ...(cloudFrontDefaults["lambda@edge"] || {})
-    };
-    delete defaultLambdaAtEdgeConfig["origin-response"];
-
-    const cloudFrontOutputs = await cloudFront({
-      defaults: {
-        ttl: 0,
-        ...cloudFrontDefaults,
-        forward: {
-          cookies: "all",
-          queryString: true,
-          ...cloudFrontDefaults.forward
-        },
-        // everything after here cant be overridden
-        allowedHttpMethods: ["HEAD", "GET"],
-        "lambda@edge": {
-          ...defaultLambdaAtEdgeConfig,
-          "origin-request": `${defaultEdgeLambdaOutputs.arn}:${defaultEdgeLambdaPublishOutputs.version}`,
-          "origin-response": `${defaultEdgeLambdaOutputs.arn}:${defaultEdgeLambdaPublishOutputs.version}`
-        },
-        compress: true
-      },
-      origins: cloudFrontOrigins,
-      ...(cloudFrontPriceClassInputs && {
-        priceClass: cloudFrontPriceClassInputs
-      })
-    });
-
-    let appUrl = cloudFrontOutputs.url;
-
-    await createInvalidation({
-      distributionId: cloudFrontOutputs.id,
-      credentials: this.context.credentials.aws
-    });
-
-    const { domain, subdomain } = obtainDomains(inputs.domain);
-    if (domain && subdomain) {
-      const domainComponent = await this.load("thrive-domain");
-      const domainOutputs = await domainComponent({
-        privateZone: false,
-        domain,
-        subdomains: {
-          [subdomain]: cloudFrontOutputs
-        },
-        domainType: inputs.domainType || "both",
-        defaultCloudfrontInputs: cloudFrontDefaults
-      });
-      appUrl = domainOutputs.domains[0];
-    }
-
     return {
-      appUrl,
       bucketName: bucketOutputs.name
     };
   }

@@ -171,10 +171,6 @@ describe("Custom inputs", () => {
         })
       );
     });
-
-    it("outputs custom domain url", () => {
-      expect(componentOutputs.appUrl).toEqual(expectedDomain);
-    });
   });
 
   describe.each`
