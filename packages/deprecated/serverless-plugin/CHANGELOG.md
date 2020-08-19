@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2.6.3-alpha.2 (2020-08-19)
+
+**Note:** Version bump only for package thrive-serverless-plugin
+
 ## [2.6.3-alpha.1](https://github.com/danielcondemarin/serverless-next.js/compare/thrive-serverless-plugin@2.6.3-alpha.0...thrive-serverless-plugin@2.6.3-alpha.1) (2020-08-14)
 
 **Note:** Version bump only for package thrive-serverless-plugin

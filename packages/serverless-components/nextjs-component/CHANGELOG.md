@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 1.17.0-alpha.7 (2020-08-19)
+
+### Features
+
+- **serverless-component, lambda-at-edge, lambda-at-edge-compat, s3-static-assets:** add support for getStaticPaths fallback true ([#544](https://github.com/danielcondemarin/serverless-next.js/issues/544)) ([a08217b](https://github.com/danielcondemarin/serverless-next.js/commit/a08217ba26ea90f67c562fe4ae9510b617d14d08))
+
 # [1.17.0-alpha.6](https://github.com/danielcondemarin/serverless-next.js/compare/thrive-serverless-component@1.17.0-alpha.5...thrive-serverless-component@1.17.0-alpha.6) (2020-08-19)
 
 **Note:** Version bump only for package thrive-serverless-component

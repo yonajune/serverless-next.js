@@ -3,7 +3,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "version": "1.17.0-alpha.6",
+  "version": "1.17.0-alpha.7",
   "description": "Serverless nextjs powered by Serverless Components",
   "main": "./serverless.js",
   "types": "dist/component.d.ts",
@@ -33,15 +33,15 @@
   "dependencies": {
     "@serverless/aws-s3": "^4.2.0",
     "@serverless/core": "^1.1.2",
+    "aws-sdk": "^2.702.0",
+    "fs-extra": "^9.0.1",
     "thrive-aws-cloudfront": "link:../aws-cloudfront",
     "thrive-aws-lambda": "link:../aws-lambda",
     "thrive-cloudfront": "link:../../libs/cloudfront",
     "thrive-domain": "link:../domain",
     "thrive-lambda-at-edge": "link:../../libs/lambda-at-edge",
     "thrive-next-aws-cloudfront": "link:../../compat-layers/lambda-at-edge-compat",
-    "thrive-s3-static-assets": "link:../../libs/s3-static-assets",
-    "aws-sdk": "^2.702.0",
-    "fs-extra": "^9.0.1"
+    "thrive-s3-static-assets": "link:../../libs/s3-static-assets"
   },
   "devDependencies": {
     "@types/fs-extra": "^9.0.1",

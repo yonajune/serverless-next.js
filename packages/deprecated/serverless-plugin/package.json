@@ -3,7 +3,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "version": "2.6.3-alpha.1",
+  "version": "2.6.3-alpha.2",
   "description": "A serverless plugin for nextjs 8 serverless target",
   "main": "index.js",
   "keywords": [
@@ -25,7 +25,6 @@
   },
   "dependencies": {
     "@mapbox/s3urls": "^1.5.3",
-    "thrive-next-aws-lambda": "link:../../compat-layers/apigw-lambda-compat",
     "chalk": "^2.4.2",
     "debug": "^4.1.1",
     "fs-extra": "^7.0.1",
@@ -33,7 +32,8 @@
     "klaw": "^3.0.0",
     "lodash.clonedeep": "^4.5.0",
     "lodash.merge": "^4.6.1",
-    "mime": "^2.4.0"
+    "mime": "^2.4.0",
+    "thrive-next-aws-lambda": "link:../../compat-layers/apigw-lambda-compat"
   },
   "engines": {
     "node": ">=8.5.0"
